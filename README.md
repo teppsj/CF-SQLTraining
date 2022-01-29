@@ -14,4 +14,5 @@ The Rockbuster Stealth Management Board asked the following questions to help dr
 ## Additional Resources
 
 [Visual Presentation of findings](https://public.tableau.com/app/profile/joshua.tepps/viz/RockbusterStealthLLCJT/Story1)
+
 [Data Dictionary](https://github.com/teppsj/SQLEntries/files/7964783/Analytics3.10.JTepps.DD.pdf)
