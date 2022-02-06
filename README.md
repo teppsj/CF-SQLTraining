@@ -1,4 +1,4 @@
-# SQLProject
+# Rockbuster-SQL Training
 ## Overview
 
 The material in this repository shows off my SQL work with fake data for a fake company, Rockbuster Stealth LLC. The business intelligence (BI) department asked for my help with their launch strategy for a new online video service.
@@ -12,7 +12,6 @@ The Rockbuster Stealth Management Board asked the following questions to help dr
 * Do sales figures vary between geographic regions? 
 
 ## Additional Resources
-
 [Visual Presentation of findings](https://public.tableau.com/app/profile/joshua.tepps/viz/RockbusterStealthLLCJT/Story1)
 
 [Data Dictionary](https://github.com/teppsj/SQLEntries/files/7964783/Analytics3.10.JTepps.DD.pdf)
