@@ -1,0 +1,28 @@
+**Find the top 5 customers in the top 10 cities of the top 10 countries for sales**
+
+WITH customer_cte (customer_id, first_name, last_name, country, city, total_amount_paid) AS			
+	 (SELECT A. customer_id, B. first_name, B. last_name, D. city, E. country, SUM (A. amount) AS total_amount_paid		
+		FROM payment A	
+		INNER JOIN customer B ON A. customer_id = B. customer_id	
+		INNER JOIN address C ON B. address_id = C. address_id	
+		INNER JOIN city D ON C. city_id = D. city_id	
+		INNER JOIN country E ON D. country_id = E. country_id	
+	  GROUP BY A. customer_id, B. first_name, B. last_name, D. city, E. country, A. amount		
+	  ORDER BY total_amount_paid DESC)		
+/*Main Query*/			
+SELECT E.customer_id, E.first_name, E.last_name, C.city, top10_countries.country, E.total_amount_paid			
+FROM customer AS A			
+INNER JOIN address AS B ON A.address_id = B.address_id			
+INNER JOIN city AS C ON B.city_id = C.city_id			
+INNER JOIN customer_cte AS E ON A.customer_id = E.customer_id			
+INNER JOIN (SELECT COUNT (a.customer_id) AS count_of_customers, D. country_id, D. country			
+			FROM customer A
+			INNER JOIN address B ON A.address_id = B.address_id
+			INNER JOIN city C ON B.city_id = C.city_id
+  		INNER JOIN country D ON C.country_ID = D.country_ID
+			GROUP BY D.country_id
+			ORDER BY COUNT (a.customer_id) DESC
+			LIMIT 10) AS top10_countries ON C.country_id = top10_countries.country_id
+GROUP BY top10_countries.country, c.city, e.customer_id, e.first_name, e.last_name, e.total_amount_paid			
+ORDER BY (e.total_amount_paid) DESC			
+LIMIT 5;			
